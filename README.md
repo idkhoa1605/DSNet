@@ -1,5 +1,6 @@
 # Video Summarization: Final Computer Vision 18TN Project
 ## Using [DSNet](https://ieeexplore.ieee.org/document/9275314) & [MSVA](https://arxiv.org/pdf/2104.11530.pdf)
+*Original project available [here](https://github.com/li-plus/DSNet)*
 
 ## Bắt đầu
 *Do chưa thật sự chạy được code ở bài báo MSVA nên ở đây ta chỉ huấn luyện, chạy mô hình DSNet.*
@@ -55,23 +56,23 @@ DSNet
 Mô hình đã được tác giả huấn luyện sẵn. Bạn có thể sử dụng hoặc bỏ qua.
 
 ```sh
-!mkdir -p models 
+! mkdir -p models 
 % cd models
 # anchor-based model
-!wget https://www.dropbox.com/s/0jwn4c1ccjjysrz/pretrain_ab_basic.zip
-!unzip pretrain_ab_basic.zip
+! wget https://www.dropbox.com/s/0jwn4c1ccjjysrz/pretrain_ab_basic.zip
+! unzip pretrain_ab_basic.zip
 # anchor-free model
-!wget https://www.dropbox.com/s/2hjngmb0f97nxj0/pretrain_af_basic.zip
-!unzip pretrain_af_basic.zip
+! wget https://www.dropbox.com/s/2hjngmb0f97nxj0/pretrain_af_basic.zip
+! unzip pretrain_af_basic.zip
 ```
 
 Để đánh giá mô hình đã huấn luyện trước:
 
 ```sh
 # evaluate anchor-based model
-!python evaluate.py anchor-based --model-dir ../models/pretrain_ab_basic/ --splits ../splits/tvsum.yml ../splits/summe.yml
+! python evaluate.py anchor-based --model-dir ../models/pretrain_ab_basic/ --splits ../splits/tvsum.yml ../splits/summe.yml
 # evaluate anchor-free model
-!python evaluate.py anchor-free --model-dir ../models/pretrain_af_basic/ --splits ../splits/tvsum.yml ../splits/summe.yml --nms-thresh 0.4
+! python evaluate.py anchor-free --model-dir ../models/pretrain_af_basic/ --splits ../splits/tvsum.yml ../splits/summe.yml --nms-thresh 0.4
 ```
 
 Nếu không có vấn đề xảy ra thì kết quả sẽ xấp xỉ:
@@ -111,7 +112,7 @@ To train with LSTM, Bi-LSTM or GCN feature extractor, specify the `--base-model`
 Tương tự như anchor based
 
 ```sh
-python train.py anchor-free --model-dir ../models/af_basic --splits ../splits/tvsum.yml ../splits/summe.yml --nms-thresh 0.4
+! python train.py anchor-free --model-dir ../models/af_basic --splits ../splits/tvsum.yml ../splits/summe.yml --nms-thresh 0.4
 ```
 
 Lưu ý: NMS threshold khuyến nghị là 0.4
